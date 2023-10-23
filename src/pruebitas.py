@@ -3,7 +3,8 @@ from cPacient import cPacient
 from cDisease import cDisease
 from cColour import cColour
 from queue import PriorityQueue
-from divideandconq import who_shall_I_Take_Care_of
+from divideAndConquer import who_shall_I_Take_Care_of
+from relojComputacional import RelojComputacional
 
 def prioridades(pacient: cPacient, cola: PriorityQueue):
 
@@ -28,6 +29,7 @@ if __name__ == "__main__":
     prioridades(pacientaylor, colapac)
 
     listapac=[paciente, pacientelolo, pacientaylor]
+
 
     print(who_shall_I_Take_Care_of(listapac,1, len(listapac)).name)
 
