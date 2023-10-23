@@ -12,4 +12,5 @@ class cPacient:
         time_actual: int
         return (time_actual - self.time_arrival)
 
-
+    def timeremaining(self) -> int:
+        return (self.disease.max_time - self.timepassed())
