@@ -6,5 +6,5 @@ from queue import PriorityQueue
 
 def who_shall_I_Take_Care_of_GREEDY(colapac:queue.PriorityQueue) -> cPacient:
 
-    pacienteaux=colapac.get()
+    pacienteaux = colapac.get()
     return pacienteaux

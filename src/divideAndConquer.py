@@ -4,7 +4,6 @@ from cNurse import cNurse
 def who_shall_I_Take_Care_of(lista_pac: list[cPacient],init: int,end: int) -> cPacient:
 
     if (end - init == 0):                                       ##tengo un solo paciente en la lista
-
         return lista_pac[init-1]
 
     elif (end - init == 1):                                     ##tengo dos pacientes en la lista

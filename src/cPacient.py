@@ -1,13 +1,15 @@
 from cDisease import cDisease
 from datetime import datetime
+
+disease1 = cDisease()
 class cPacient:
-    def __init__(self,name,surname,DNI,code,disease,time_arrival):
+    def __init__(self,name,surname,DNI,code, disease = disease1):
         self.name: str = name
         self.surname: str = surname
         self.DNI: str = DNI
         self.code: str = code
-        self.disease: datetime = disease
-        self.time_arrival: int = time_arrival
+        self.disease: cDisease = disease
+        self.time_arrival: datetime = datetime.now()
 
     def timepassed(self) -> int:                                ## me devuelve la cant de minutos que lleva el paciente esperando
         time_actual = datetime.now()
