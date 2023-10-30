@@ -1,9 +1,8 @@
 from cDisease import cDisease
 from datetime import datetime
 
-disease1 = cDisease()
 class cPacient:
-    def __init__(self,name,surname,DNI,code, disease = disease1):
+    def __init__(self,name,surname,DNI,code, disease):
         self.name: str = name
         self.surname: str = surname
         self.DNI: str = DNI

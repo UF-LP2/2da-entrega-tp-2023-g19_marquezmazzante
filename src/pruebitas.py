@@ -4,8 +4,6 @@ from cDisease import cDisease
 from cColour import cColour
 from queue import PriorityQueue
 from divideAndConquer import who_shall_I_Take_Care_of
-from relojComputacional import RelojComputacional
-
 def prioridades(pacient: cPacient, cola: PriorityQueue):
 
     cola.put(pacient.disease.colour)
@@ -14,19 +12,14 @@ def prioridades(pacient: cPacient, cola: PriorityQueue):
 
 if __name__ == "__main__":
 
-    colapac=queue.PriorityQueue()
-    mitia=cColour
-    fiebre=cDisease("fiebre", mitia.AMARILLO.value, 25, "fiebrecita", 4)
-    paciente=cPacient("alma", "marquez", 45296117, 1234, fiebre, 10)
-    prioridades(paciente, colapac )
-    verde = cColour
-    caca = cDisease("caca", verde.VERDE.value, 60, "cacona", 2)
-    pacientelolo = cPacient("lolo", "mazzante", 45296117, 1235, caca, 9)
-    prioridades(pacientelolo, colapac)
-    naranja = cColour
-    coma = cDisease("no se despierta", naranja.NARANJA.value, 15, "coma", 9)
-    pacientaylor = cPacient("taylor", "swift", 45296117, 1236, coma, 12)
-    prioridades(pacientaylor, colapac)
+    verde = cColour(2)
+    fiebre = cDisease("fiebre", verde)
+    paciente = cPacient("alma", "marquez", 45296117, 1234, fiebre)
+    caca = cDisease("caca", verde)
+    pacientelolo = cPacient("lolo", "mazzante", 45296117, 1235, caca)
+    naranja = cColour(4)
+    coma = cDisease("no se despierta", naranja)
+    pacientaylor = cPacient("taylor", "swift", 45296117, 1236, coma)
 
     listapac=[paciente, pacientelolo, pacientaylor]
 
