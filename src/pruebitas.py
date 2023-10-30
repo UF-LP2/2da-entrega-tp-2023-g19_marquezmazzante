@@ -20,8 +20,10 @@ if __name__ == "__main__":
     naranja = cColour(4)
     coma = cDisease("no se despierta", naranja)
     pacientaylor = cPacient("taylor", "swift", 45296117, 1236, coma)
+    random = cDisease()
+    pacientesims = cPacient("sims", "sims", 435534344, 43243, random)
 
-    listapac=[paciente, pacientelolo, pacientaylor]
+    listapac=[paciente, pacientelolo, pacientaylor,pacientesims]
 
 
     print(who_shall_I_Take_Care_of(listapac,1, len(listapac)).name)
