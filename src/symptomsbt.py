@@ -95,36 +95,31 @@ def search(symp : str, btree: binarytree) -> int:
     return aux
 
 def diagnose(pacient: cPacient):
+    if paciente.symptoms[0] == esymptom(32) and len(paciente.symptoms) > 1:
+        raise Exception("not valid pacient")
 
     assign = 0
     tree = btsymptoms()
-    for i in range(len(pacient.disease.symptom)):
-        assign = assign + search(enumConverter(pacient.disease.symptom[i].value), tree)
+    for i in range(len(pacient.symptoms)):
+        assign = assign + search(enumConverter(pacient.symptoms[i].value), tree)
 
-    if assign>=90:
-        pacient.disease.colour=1
-    elif assign<90 and assign>=70:
-        pacient.disease.colour=2
-    elif assign<70 and assign>=50:
-        pacient.disease.colour=3
-    elif assign<50 and assign>=30:
-        pacient.disease.colour=4
-    elif assign<30 and assign>=10:
-        pacient.disease.colour=5
-    return pacient.disease.colour
-
-##boludines q capaz sirven
-
-def invalido(paciente: cPacient):
-    if paciente.disease.symptom[0]==esymptom(32) and len(paciente.disease.symptom)>1:
-        raise Exception("not valid pacient")
+    if assign >= 90:
+        pacient.colour = 1
+    elif assign < 90 and assign >= 70:
+        pacient.colour = 2
+    elif assign < 70 and assign >= 50:
+        pacient.colour = 3
+    elif assign < 50 and assign >= 30:
+        pacient.colour = 4
+    elif assign < 30 and assign >= 10:
+        pacient.colour = 5
+    return pacient.colour
 
 
 
 if __name__ == "__main__":
 
     verde = cColour(2)
-    fiebre = cDisease([esymptom(21),esymptom(22)], verde)
-    paciente = cPacient("alma", "marquez", 45296117, 1234, fiebre)
-
+    sintomitas: list[esymptom] = [esymptom(21),esymptom(22)]
+    paciente = cPacient("alma", "marquez", 45296117, 1234, sintomitas)
     print(diagnose(paciente))

@@ -1,51 +1,52 @@
-name,surname,DNI,Code
-Abran,Domm,25590314,1
-Agnes,Hobble,48777476,2
-Sally,Addlestone,30657593,3
-Kata,Dudgeon,33590203,4
-Fayette,Easterfield,23643929,5
-Gabrielle,Lacroux,49011204,6
-Gottfried,Birdis,36498899,7
-Graham,Baudy,22080910,8
-Freda,Clemow,22942723,9
-Ingrid,Voaden,48279911,10
-Ellsworth,Rillstone,24796344,11
-Kaleena,Freegard,31796184,12
-Ceciley,Gilpillan,29783934,13
-Inger,MacEllen,23283801,14
-Agretha,Glaisner,29888027,15
-Stirling,Dionisii,48100277,16
-Tate,MacAfee,36754013,17
-Jayme,D'Alwis,27006728,18
-Krisha,Claussen,24016242,19
-Heinrik,Simester,32061246,20
-Homerus,Gurnee,44509310,21
-Wilt,Francesch,42145928,22
-Chas,MacTrustram,49781812,23
-Lotti,Alderwick,46202961,24
-Peria,Hanlon,36760541,25
-Dallas,Prangnell,23610822,26
-Zorine,Magnar,49355826,27
-Eunice,Haile,33366013,28
-Hagan,Junifer,22746201,29
-Zacharias,Clarae,20182138,30
-Prisca,Bewshire,33062731,31
-Kirbee,Petrozzi,48322237,32
-Ramon,Kagan,29025197,33
-Tracie,Lobley,31770930,34
-Homerus,Mundee,20616458,35
-Elsi,Fearn,49985109,36
-Barnett,Shannahan,39589913,37
-Ebonee,Bester,47588833,38
-Boy,Bischop,39816159,39
-Cammie,Perryman,47286033,40
-Jeannine,Leethem,37470765,41
-Nap,Gingedale,23297468,42
-Donal,Tugwell,28948438,43
-Jolynn,Ramel,36609561,44
-Nikita,Yele,34272516,45
-Adolphe,Hise,23508349,46
-Merell,Muzzullo,25678824,47
-Demetri,Mullin,46579172,48
-Lindi,Guerro,31110733,49
-Cliff,Peterffy,38617994,50
+name,surname,DNI,Code,Symptoms
+Abran,Domm,25590314,1,21 8
+Agnes,Hobble,48777476,2,32
+Sally,Addlestone,30657593,3,7 5 2
+Kata,Dudgeon,33590203,4,32
+Fayette,Easterfield,23643929,5,2 3 1
+Gabrielle,Lacroux,49011204,6,3 19
+Gottfried,Birdis,36498899,7,25 21
+Graham,Baudy,22080910,8,2 14
+Freda,Clemow,22942723,9,12
+Ingrid,Voaden,48279911,10,18 23
+Ellsworth,Rillstone,24796344,11,22
+Kaleena,Freegard,31796184,12,28
+Ceciley,Gilpillan,29783934,13,10 8
+Inger,MacEllen,23283801,14,15 19
+Agretha,Glaisner,29888027,15,20 26
+Stirling,Dionisii,48100277,16,21
+Tate,MacAfee,36754013,17,13 15
+Jayme,D'Alwis,27006728,18,18
+Krisha,Claussen,24016242,19,2 3 4
+Heinrik,Simester,32061246,20,21
+Homerus,Gurnee,44509310,21,1 2
+Wilt,Francesch,42145928,22,19 21
+Chas,MacTrustram,49781812,23,2 3 4
+Lotti,Alderwick,46202961,24,6
+Peria,Hanlon,36760541,25,8
+Dallas,Prangnell,23610822,26,9 10
+Zorine,Magnar,49355826,27,21
+Eunice,Haile,33366013,28,9
+Hagan,Junifer,22746201,29,10
+Zacharias,Clarae,20182138,30,20
+Prisca,Bewshire,33062731,31,13 14
+Kirbee,Petrozzi,48322237,32,21
+Ramon,Kagan,29025197,33,20
+Tracie,Lobley,31770930,34,21
+Homerus,Mundee,20616458,35,23 24
+Elsi,Fearn,49985109,36,24 9
+Barnett,Shannahan,39589913,37,1 2 3
+Ebonee,Bester,47588833,38,23
+Boy,Bischop,39816159,39,21
+Cammie,Perryman,47286033,40,27
+Jeannine,Leethem,37470765,41,29
+Nap,Gingedale,23297468,42,4 9 14
+Donal,Tugwell,28948438,43,15 26
+Jolynn,Ramel,36609561,44,28 30
+Nikita,Yele,34272516,45,31 32
+Adolphe,Hise,23508349,46,32 12
+Merell,Muzzullo,25678824,47,29
+Demetri,Mullin,46579172,48,31
+Lindi,Guerro,31110733,49,5
+Cliff,Peterffy,38617994,50,17 19 10
+

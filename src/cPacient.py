@@ -1,16 +1,32 @@
-from cDisease import cDisease
+from cColour import cColour
 from datetime import datetime
+from eSymptoms import esymptom
 
 class cPacient:
-    def __init__(self,name,surname,DNI,code, disease = None):
+    def __init__(self,name,surname,DNI,code,symptoms = None,colour = None):
         self.name: str = name
         self.surname: str = surname
         self.DNI: str = DNI
         self.code: str = code
-        if disease is None:
-            self.disease = cDisease()
+        if symptoms is None:
+            self.symptoms: list[esymptom] = [esymptom(32)]
         else:
-            self.disease: cDisease = disease
+            self.symptoms: list[esymptom] = symptoms
+        if colour is None:
+            self.colour = cColour(1)
+        else:
+            self.colour: cColour = colour
+
+        if (self.colour.value == 5):
+            self.max_time = 0
+        elif(self.colour.value == 4):
+            self.max_time = 10
+        elif(self.colour.value == 3):
+            self.max_time = 60
+        elif(self.colour.value == 2):
+            self.max_time = 120
+        elif(self.colour.value == 1):
+            self.max_time = 240
         self.time_arrival: datetime = datetime.now()
 
 
@@ -22,4 +38,4 @@ class cPacient:
 
     def timeremaining(self) -> int:                             ## devuelve el tiempo que le queda al paciente
         minpassed: int = self.timepassed()
-        return (self.disease.max_time - minpassed)
+        return (self.max_time - minpassed)
