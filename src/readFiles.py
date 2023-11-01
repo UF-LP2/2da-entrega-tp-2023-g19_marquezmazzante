@@ -12,10 +12,7 @@ def readPacients() -> list[cPacient]:
         for row in reader:
             symptoms0 = row[4]
             symptomsaux: list[str] = symptoms0.split()
-            i = 0
-            for i in range(len(symptomsaux)):
-                symptoms[i] = esymptom(int(symptomsaux[i]))
-                i = i+1
+            symptoms = [esymptom(int(symptom))for symptom in symptomsaux]
             pacient0 = cPacient(row[0],row[1],row[2],row[3],symptoms)
             pacients.append(pacient0)
     return pacients
@@ -30,6 +27,3 @@ def readNurses() -> list[cNurse]:
             nurses.append(nurse0)
 
     return nurses
-
-if __name__ == "__main__":
-    listita = readPacients()
