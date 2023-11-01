@@ -3,7 +3,8 @@ from binarytree import Node
 from cPacient import cPacient
 from cColour import cColour
 from cDisease import cDisease
-
+from eSymptoms import esymptom
+from eSymptoms import enumConverter
 def btsymptoms()->binarytree:
 
     bled=Node(90, "bled")
@@ -81,7 +82,6 @@ def btsymptoms()->binarytree:
 
     return blackout
 
-
 def search(symp : str, btree: binarytree) -> int:
 
     if(btree==None):
@@ -89,15 +89,17 @@ def search(symp : str, btree: binarytree) -> int:
     if(symp==btree.name):
         return btree.value
 
-    aux1 = search(symp, btree.left)
-    aux2 = search(symp, btree.right)
-    return aux1 + aux2
+    aux = search(symp, btree.left)
+    if aux==0:
+        aux = search(symp, btree.right)
+    return aux
 
 def diagnose(pacient: cPacient):
 
     assign = 0
-    tree=btsymptoms()
-    assign=assign+search(pacient.disease.symptom, tree)
+    tree = btsymptoms()
+    for i in range(len(pacient.disease.symptom)):
+        assign = assign + search(enumConverter(pacient.disease.symptom[i].value), tree)
 
     if assign>=90:
         pacient.disease.colour=1
@@ -111,10 +113,18 @@ def diagnose(pacient: cPacient):
         pacient.disease.colour=5
     return pacient.disease.colour
 
+##boludines q capaz sirven
+
+def invalido(paciente: cPacient):
+    if paciente.disease.symptom[0]==esymptom(32) and len(paciente.disease.symptom)>1:
+        raise Exception("not valid pacient")
+
+
+
 if __name__ == "__main__":
 
     verde = cColour(2)
-    fiebre = cDisease("muscular weakness", verde)
+    fiebre = cDisease([esymptom(21),esymptom(22)], verde)
     paciente = cPacient("alma", "marquez", 45296117, 1234, fiebre)
 
     print(diagnose(paciente))

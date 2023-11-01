@@ -1,10 +1,11 @@
 from cColour import cColour
+from eSymptoms import esymptom
 class cDisease:
-    def __init__(self, symptom = None, colour = None):
+    def __init__(self, symptom: list[esymptom] = None, colour = None):
         if symptom is None:
-            self.symptom = ""
+            self.symptom = 32
         else:
-            self.symptom: str =symptom
+            self.symptom: list[esymptom] = symptom
         if colour is None:
             self.colour = cColour(1)
         else:
