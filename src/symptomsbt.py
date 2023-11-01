@@ -1,49 +1,46 @@
 import binarytree
-from binarytree import Node
+from my_library import MyNode
 from cPacient import cPacient
 from cColour import cColour
-from cDisease import cDisease
 from eSymptoms import esymptom
 from eSymptoms import enumConverter
 def btsymptoms()->binarytree:
 
-    bled=Node(90, "bled")
-    blackout=Node(40, "blackout")
-    damaged_organs=Node(70, "damaged organs")
-    changing_behaviour=Node(30, "changing behaviour")
-    drooling=Node(41, "drooling")
-    bloody_vomit=Node(50, "bloody vomit")
-    abdominal_cramps=Node(25, "abdominal cramps")
-    neck_pain=Node(31, "neck pain")
-    nausea=Node(20, "nausea")
-    tachycardia=Node(42, "tachycardia")
-    tearing_eyes=Node(26, "tearing eyes")
-    facial_swelling=Node(35, "facial swelling")
-    eye_redness=Node(15, "eye redness")
+    bled=MyNode(90, "bled")
+    blackout=MyNode(40, "blackout")
+    damaged_organs=MyNode(70, "damaged organs")
+    changing_behaviour=MyNode(30, "changing behaviour")
+    drooling=MyNode(41, "drooling")
+    bloody_vomit=MyNode(50, "bloody vomit")
+    abdominal_cramps=MyNode(25, "abdominal cramps")
+    neck_pain=MyNode(31, "neck pain")
+    nausea=MyNode(20, "nausea")
+    tachycardia=MyNode(42, "tachycardia")
+    tearing_eyes=MyNode(26, "tearing eyes")
+    facial_swelling=MyNode(35, "facial swelling")
+    eye_redness=MyNode(15, "eye redness")
 
-    muscular_weakness=Node(32, "muscular weakness")
-    loss_of_balance=Node(36, "loss of balance")
-    headache=Node(16, "headache")
-    chest_pain=Node(33, "chest pain")
-    dizziness=Node(21, "dizziness")
-    hearing_loss=Node(34, "hearing loss")
-    pallor=Node(22, "pallor")
-    daze=Node(23, "daze") ##aturdimiento
-    sweat=Node(24, "sweat")
-    hallucinations=Node(51, "hallucinations")
+    muscular_weakness=MyNode(32, "muscular weakness")
+    loss_of_balance=MyNode(36, "loss of balance")
+    headache=MyNode(16, "headache")
+    chest_pain=MyNode(33, "chest pain")
+    dizziness=MyNode(21, "dizziness")
+    hearing_loss=MyNode(34, "hearing loss")
+    pallor=MyNode(22, "pallor")
+    daze=MyNode(23, "daze") ##aturdimiento
+    sweat=MyNode(24, "sweat")
+    hallucinations=MyNode(51, "hallucinations")
 
-    itch=Node(19, "itch")
-    clogged_ear=Node(29, "clogged ear")
-    dental_sensibility=Node(10, "dental sensibility")
-    gum_bleeding=Node(27, "gum bleeding")
-    oral_pain=Node(11, "oral pain")
-    mild_pain=Node(28, "mild pain")
-    traumatisms=Node(29, "traumatisms")
-    sprain=Node(39, "sprain")
+    itch=MyNode(19, "itch")
+    clogged_ear=MyNode(29, "clogged ear")
+    dental_sensibility=MyNode(10, "dental sensibility")
+    gum_bleeding=MyNode(27, "gum bleeding")
+    oral_pain=MyNode(11, "oral pain")
+    mild_pain=MyNode(28, "mild pain")
+    traumatisms=MyNode(29, "traumatisms")
+    sprain=MyNode(39, "sprain")
 
-    no_urgency=Node(9, "no urgency")
-
-    ##hago un intento de binarytree mas desbalanceado q mi vida
+    no_urgency=MyNode(9, "no urgency")
 
     ##lado derecho (rojos y naranjas)
     blackout.right=drooling

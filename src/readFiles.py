@@ -25,5 +25,4 @@ def readNurses() -> list[cNurse]:
         for row in reader:
             nurse0 = cNurse(row[0],row[1],row[2],row[3])
             nurses.append(nurse0)
-
     return nurses
