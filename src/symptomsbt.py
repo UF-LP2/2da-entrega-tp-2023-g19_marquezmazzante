@@ -92,7 +92,7 @@ def search(symp : str, btree: binarytree) -> int:
     return aux
 
 def diagnose(pacient: cPacient):
-    if paciente.symptoms[0] == esymptom(32) and len(paciente.symptoms) > 1:
+    if esymptom(32) in pacient.symptoms and len(pacient.symptoms) > 1:
         raise Exception("not valid pacient")
 
     assign = 0
