@@ -1,6 +1,5 @@
 import queue
 from cPacient import cPacient
-from cDisease import cDisease
 from cColour import cColour
 from queue import PriorityQueue
 
