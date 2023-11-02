@@ -2,7 +2,7 @@ import queue
 from cPacient import cPacient
 from eSymptoms import esymptom
 from cColour import cColour
-from divideAndConquer import who_shall_I_Take_Care_of
+from attention import who_shall_I_Take_Care_of
 
 #def prioridades(pacient: cPacient, cola: PriorityQueue):
 #

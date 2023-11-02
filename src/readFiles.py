@@ -1,10 +1,11 @@
 import csv
-from cPacient import cPacient
-from cNurse import cNurse
-from eSymptoms import esymptom
+from src.cPacient import cPacient
+from src.cNurse import cNurse
+from src.eSymptoms import esymptom
+import queue
 
-def readPacients() -> list[cPacient]:
-    pacients: list[cPacient] = []
+def readPacients() -> queue:
+    pacients = queue.Queue()
     with open("DATA_PACIENT.csv") as file:
         reader = csv.reader(file)
         symptoms: list[esymptom]
@@ -14,7 +15,7 @@ def readPacients() -> list[cPacient]:
             symptomsaux: list[str] = symptoms0.split()
             symptoms = [esymptom(int(symptom))for symptom in symptomsaux]
             pacient0 = cPacient(row[0],row[1],row[2],row[3],symptoms)
-            pacients.append(pacient0)
+            pacients.put(pacient0)
     return pacients
 
 def readNurses() -> list[cNurse]:

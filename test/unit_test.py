@@ -1,9 +1,9 @@
 import pytest
-from src.symptomsbt import diagnose
+from src.diagnose import diagnose
 from src.cPacient import cPacient
 from src.eSymptoms import esymptom
-from src.symptomsbt import search
-from src.symptomsbt import btsymptoms
+from src.diagnose import search
+from src.diagnose import btsymptoms
 
 def diagnose_test1():
     sintomas:list[esymptom] =[esymptom(2),esymptom(15), esymptom(31)]
