@@ -1,16 +1,28 @@
-#from src.attention import who_shall_I_Take_Care_of
-#from src.diagnose import diagnose
-#from src.cNurse import cNurse
-#from src.cPacient import cPacient
-#from src.cColour import cColour
-from src.readFiles import readPacients
 from src.readFiles import readNurses
-import queue
+from src.readFiles import readPacients
+from datetime import datetime
+
 NConsulMax = 10
 
 def main_divide_and_conquer() -> None:
+
     listNurses = readNurses()
     queuePacients = readPacients()
+
+    time_actual = datetime.now()
+    if (time_actual.hour > 6 and time_actual.hour < 10):       #turno mañana
+        nNurses = 2
+    elif (time_actual.hour > 10 and time_actual.hour < 16):    #turno hora pico
+        nNurses = 5
+    elif (time_actual.hour > 16 and time_actual.hour < 23):    #turno tarde
+        nNurses = 3
+    else:                                                      #turno noche
+        nNurses = 1
+
+
+
+
+
 
 
 

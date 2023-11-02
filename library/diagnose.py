@@ -1,9 +1,8 @@
 import binarytree
-from btSymptoms import btsymptoms
-from cPacient import cPacient
-from cColour import cColour
-from eSymptoms import esymptom
-from eSymptoms import enumConverter
+from library.btSymptoms import btsymptoms
+from library.cPacient import cPacient
+from library.eSymptoms import esymptom
+from library.eSymptoms import enumConverter
 
 def search(symp: str, btree: binarytree) -> int:
 
@@ -29,22 +28,14 @@ def diagnose(pacient: cPacient):
         assign = assign + search(enumConverter(pacient.symptoms[i].value), tree)
 
     if assign >= 90:
-        pacient.colour = 1
+        pacient.colour = 5
     elif assign < 90 and assign >= 70:
-        pacient.colour = 2
+        pacient.colour = 4
     elif assign < 70 and assign >= 50:
         pacient.colour = 3
     elif assign < 50 and assign >= 30:
-        pacient.colour = 4
+        pacient.colour = 2
     elif assign < 30 and assign >= 10:
-        pacient.colour = 5
+        pacient.colour = 1
     return pacient.colour
 
-
-
-if __name__ == "__main__":
-
-    verde = cColour(2)
-    sintomitas: list[esymptom] = [esymptom(21),esymptom(22)]
-    paciente = cPacient("alma", "marquez", 45296117, 1234, sintomitas)
-    print(diagnose(paciente))

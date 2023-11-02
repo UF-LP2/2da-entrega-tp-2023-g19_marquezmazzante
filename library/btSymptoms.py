@@ -1,5 +1,5 @@
 import binarytree
-from my_library import MyNode
+from library.my_library import MyNode
 def btsymptoms()->binarytree:
 
     bled=MyNode(90, "bled")

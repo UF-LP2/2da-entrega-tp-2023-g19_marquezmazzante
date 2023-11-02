@@ -1,12 +1,12 @@
 import csv
-from src.cPacient import cPacient
-from src.cNurse import cNurse
-from src.eSymptoms import esymptom
+from library.cPacient import cPacient
+from library.cNurse import cNurse
+from library.eSymptoms import esymptom
 import queue
 
 def readPacients() -> queue:
     pacients = queue.Queue()
-    with open("DATA_PACIENT.csv") as file:
+    with open("src/DATA_PACIENT.csv") as file:
         reader = csv.reader(file)
         symptoms: list[esymptom]
         next(file)
@@ -20,7 +20,7 @@ def readPacients() -> queue:
 
 def readNurses() -> list[cNurse]:
     nurses: list[cNurse] = []
-    with open("DATA_NURSE.csv") as file:
+    with open("src/DATA_NURSE.csv") as file:
         reader = csv.reader(file)
         next(file)
         for row in reader:

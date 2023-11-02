@@ -1,4 +1,4 @@
-from cPacient import cPacient
+from library.cPacient import cPacient
 
 def who_shall_I_Take_Care_of(lista_pac: list[cPacient],init: int,end: int) -> cPacient:
 
