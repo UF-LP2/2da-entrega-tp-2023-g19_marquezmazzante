@@ -1,5 +1,6 @@
 from library.cColour import cColour
 from datetime import datetime
+from datetime import timedelta
 from library.eSymptoms import esymptom
 
 class cPacient:
@@ -30,12 +31,11 @@ class cPacient:
         self.time_arrival: datetime = datetime.now()
 
 
-    def timepassed(self) -> int:                                ## me devuelve la cant de minutos que lleva el paciente esperando
+    def timepassed(self) -> timedelta:                                ## me devuelve la cant de minutos que lleva el paciente esperando
         time_actual = datetime.now()
         timepassed: datetime = time_actual - self.time_arrival
-        minpassed: int = timepassed.total_seconds()/60
-        return minpassed
+        return timepassed
 
     def timeremaining(self) -> int:                             ## devuelve el tiempo que le queda al paciente
-        minpassed: int = self.timepassed()
+        minpassed: int = self.timepassed().seconds * 5
         return (self.max_time - minpassed)
