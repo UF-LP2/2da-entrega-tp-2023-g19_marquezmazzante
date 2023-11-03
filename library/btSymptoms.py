@@ -2,41 +2,41 @@ import binarytree
 from library.my_library import MyNode
 def btsymptoms()->binarytree:
 
-    bled=MyNode(90, "bled")
-    blackout=MyNode(40, "blackout")
-    damaged_organs=MyNode(70, "damaged organs")
-    changing_behaviour=MyNode(30, "changing behaviour")
-    drooling=MyNode(41, "drooling")
-    bloody_vomit=MyNode(50, "bloody vomit")
-    abdominal_cramps=MyNode(25, "abdominal cramps")
-    neck_pain=MyNode(31, "neck pain")
-    nausea=MyNode(20, "nausea")
-    tachycardia=MyNode(42, "tachycardia")
-    tearing_eyes=MyNode(26, "tearing eyes")
-    facial_swelling=MyNode(35, "facial swelling")
-    eye_redness=MyNode(15, "eye redness")
+    bled=MyNode(90, "bled")                                 #1
+    blackout=MyNode(40, "blackout")                         #2
+    damaged_organs=MyNode(70, "damaged organs")             #3
+    changing_behaviour=MyNode(30, "changing behaviour")     #4
+    drooling=MyNode(41, "drooling")                         #5
+    bloody_vomit=MyNode(50, "bloody vomit")                 #6
+    abdominal_cramps=MyNode(25, "abdominal cramps")         #7
+    neck_pain=MyNode(31, "neck pain")                       #8
+    nausea=MyNode(20, "nausea")                             #9
+    tachycardia=MyNode(42, "tachycardia")                   #10
+    tearing_eyes=MyNode(26, "tearing eyes")                 #11
+    facial_swelling=MyNode(35, "facial swelling")           #12
+    eye_redness=MyNode(15, "eye redness")                   #13
 
-    muscular_weakness=MyNode(32, "muscular weakness")
-    loss_of_balance=MyNode(36, "loss of balance")
-    headache=MyNode(16, "headache")
-    chest_pain=MyNode(33, "chest pain")
-    dizziness=MyNode(21, "dizziness")
-    hearing_loss=MyNode(34, "hearing loss")
-    pallor=MyNode(22, "pallor")
-    daze=MyNode(23, "daze") ##aturdimiento
-    sweat=MyNode(24, "sweat")
-    hallucinations=MyNode(51, "hallucinations")
+    muscular_weakness=MyNode(32, "muscular weakness")       #14
+    loss_of_balance=MyNode(36, "loss of balance")           #15
+    headache=MyNode(16, "headache")                         #16
+    chest_pain=MyNode(33, "chest pain")                     #17
+    dizziness=MyNode(21, "dizziness")                       #18
+    hearing_loss=MyNode(34, "hearing loss")                 #19
+    pallor=MyNode(22, "pallor")                             #20
+    daze=MyNode(23, "daze") ##aturdimiento                  #21
+    sweat=MyNode(24, "sweat")                               #22
+    hallucinations=MyNode(51, "hallucinations")             #23
 
-    itch=MyNode(19, "itch")
-    clogged_ear=MyNode(29, "clogged ear")
-    dental_sensibility=MyNode(10, "dental sensibility")
-    gum_bleeding=MyNode(27, "gum bleeding")
-    oral_pain=MyNode(11, "oral pain")
-    mild_pain=MyNode(28, "mild pain")
-    traumatisms=MyNode(29, "traumatisms")
-    sprain=MyNode(39, "sprain")
+    itch=MyNode(19, "itch")                                 #24
+    clogged_ear=MyNode(29, "clogged ear")                   #25
+    dental_sensibility=MyNode(10, "dental sensibility")     #26
+    gum_bleeding=MyNode(27, "gum bleeding")                 #27
+    oral_pain=MyNode(11, "oral pain")                       #28
+    mild_pain=MyNode(28, "mild pain")                       #29
+    traumatisms=MyNode(29, "traumatisms")                   #30
+    sprain=MyNode(39, "sprain")                             #31
 
-    no_urgency=MyNode(9, "no urgency")
+    no_urgency=MyNode(9, "no urgency")                      #32
 
     ##lado derecho (rojos y naranjas)
     blackout.right=drooling

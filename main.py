@@ -7,7 +7,7 @@ NConsulMax = 10
 def main_divide_and_conquer() -> None:
 
     listNurses = readNurses()
-    queuePacients = readPacients()
+    listPacients = readPacients()
 
     time_actual = datetime.now()
     if (time_actual.hour > 6 and time_actual.hour < 10):       #turno mañana

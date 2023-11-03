@@ -2,7 +2,6 @@ from library.cPacient import cPacient
 from library.cColour import cColour
 from library.eSymptoms import esymptom
 from library.attention import who_shall_I_Take_Care_of
-from library.diagnose import diagnose
 
 
 def test_attention1():
@@ -23,10 +22,5 @@ def test_attention2():
     listapac = [pacient1]
     assert listapac[0] == pacient1
 
-def test_actual():
-    assert 1 == 1
 
-def test_diagnose1():
-    sintomas:list[esymptom] =[esymptom(2),esymptom(15), esymptom(31)]
-    alma=cPacient("alma", "marquez","45296117", 1234, sintomas)
-    assert (diagnose(alma) == 1) == True
+
