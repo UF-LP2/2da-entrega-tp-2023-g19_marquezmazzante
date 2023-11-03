@@ -1,7 +1,7 @@
 from library.cColour import cColour
 from datetime import datetime
 from datetime import timedelta
-from library.eSymptoms import esymptom
+from src.eSymptoms import esymptom
 
 class cPacient:
     def __init__(self,name,surname,DNI,code,symptoms = None,colour = None):

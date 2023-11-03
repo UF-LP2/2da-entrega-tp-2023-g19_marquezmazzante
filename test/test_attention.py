@@ -1,6 +1,6 @@
 from library.cPacient import cPacient
 from library.cColour import cColour
-from library.eSymptoms import esymptom
+from src.eSymptoms import esymptom
 from library.attention import who_shall_I_Take_Care_of
 from datetime import datetime
 from datetime import timedelta

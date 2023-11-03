@@ -1,9 +1,9 @@
 import csv
 from library.cPacient import cPacient
 from library.cNurse import cNurse
-from library.eSymptoms import esymptom
+from src.eSymptoms import esymptom
 import os
-import queue
+
 
 def readPacients() -> list[cPacient]:
     #pacients = queue.Queue()

@@ -1,9 +1,8 @@
 import time
 
 from library.cPacient import cPacient
-from library.eSymptoms import esymptom
+from src.eSymptoms import esymptom
 from library.cColour import cColour
-from library.attention import who_shall_I_Take_Care_of
 from threading import Thread
 from datetime import datetime
 
