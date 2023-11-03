@@ -2,11 +2,16 @@ import csv
 from library.cPacient import cPacient
 from library.cNurse import cNurse
 from library.eSymptoms import esymptom
+import os
 import queue
 
-def readPacients() -> queue:
-    pacients = queue.Queue()
-    with open("src/DATA_PACIENT.csv") as file:
+def readPacients() -> list[cPacient]:
+    #pacients = queue.Queue()
+    pacients: list[cPacient] = []
+    current_directory = os.path.dirname(os.path.realpath(__file__))
+    file_path = os.path.join(current_directory,"DATA_PACIENT.csv")
+
+    with open(file_path) as file:
         reader = csv.reader(file)
         symptoms: list[esymptom]
         next(file)
@@ -15,12 +20,16 @@ def readPacients() -> queue:
             symptomsaux: list[str] = symptoms0.split()
             symptoms = [esymptom(int(symptom))for symptom in symptomsaux]
             pacient0 = cPacient(row[0],row[1],row[2],row[3],symptoms)
-            pacients.put(pacient0)
+            pacients.append(pacient0)
+            #pacients.put(pacient0)
     return pacients
 
 def readNurses() -> list[cNurse]:
     nurses: list[cNurse] = []
-    with open("src/DATA_NURSE.csv") as file:
+    current_directory = os.path.dirname(os.path.realpath(__file__))
+    file_path = os.path.join(current_directory,"DATA_NURSE.csv")
+
+    with open(file_path) as file:
         reader = csv.reader(file)
         next(file)
         for row in reader:
