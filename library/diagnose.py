@@ -35,7 +35,7 @@ def diagnose(pacient: cPacient):
         pacient.colour = 3
     elif assign < 50 and assign >= 30:
         pacient.colour = 2
-    elif assign < 30 and assign >= 10:
+    else:
         pacient.colour = 1
     return pacient.colour
 
