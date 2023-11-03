@@ -17,7 +17,7 @@ def search(symp: str, btree: binarytree) -> int:
     return aux
 
 def diagnose(pacient: cPacient):
-    if pacient.symptoms[0] == esymptom(32) and len(pacient.symptoms) > 1:
+    if esymptom(32) in pacient.symptoms and len(pacient.symptoms) > 1:
         raise Exception("not valid pacient")
 
     assign = 0
@@ -29,13 +29,18 @@ def diagnose(pacient: cPacient):
 
     if assign >= 90:
         pacient.colour = 5
+        pacient.max_time=0
     elif assign < 90 and assign >= 70:
         pacient.colour = 4
+        pacient.max_time=10
     elif assign < 70 and assign >= 50:
         pacient.colour = 3
+        pacient.max_time=60
     elif assign < 50 and assign >= 30:
         pacient.colour = 2
+        pacient.max_time=120
     else:
         pacient.colour = 1
+        pacient.max_time=240
     return pacient.colour
 

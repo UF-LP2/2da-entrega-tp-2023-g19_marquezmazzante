@@ -1,5 +1,6 @@
 import pytest
-
+from library.btSymptoms import btsymptoms
+from library.diagnose import search
 from library.cPacient import cPacient
 from library.diagnose import diagnose
 from library.eSymptoms import esymptom
@@ -12,7 +13,6 @@ def test_diagnose1():
 
      for i in range (len(diagnoses)):
           assert diagnose(listPacients[i]) == diagnoses[i]
-          i = i +1
 
 def test_diagnose2():
      pacientByDefault = cPacient("sims", "sims", 435534344, 43243)
@@ -25,11 +25,10 @@ def test_diagnose3():
           diagnose(pacient1)
 
 
-# def test_search1():
-#      tree = btsymptoms()
-#      assert search("bloody vomit", tree) == 50
-#
-# def test_search2():
-#      tree = btsymptoms()
-#      assert search("bled", tree) == 90
+def test_search1():
+      tree = btsymptoms()
+      assert search("bloody vomit", tree) == 50
 
+def test_search2():
+      tree = btsymptoms()
+      assert search("bled", tree) == 90
