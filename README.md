@@ -6,7 +6,7 @@ Los pacientes se diagnostican por los enfermeros correspondientes al horario del
 de espera, donde el elegido para ser atendido será el que más grave esté y que menos tiempo de espera restante tenga.
 
 ## Integrantes
-- Márquez Alma
+- Marquez Alma
 - Mazzante Lorenzo
 
 ## Objetivo del proyecto
