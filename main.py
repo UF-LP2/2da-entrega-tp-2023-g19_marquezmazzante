@@ -32,7 +32,7 @@ def main_divide_and_conquer() -> None:
     contador = 0
 
     listNurses = readNurses()
-    listPacients = readPacients()
+    listPacients = readPacients("Mock_Data_Pacients.csv")
 
     listWaiting: list[cPacient] = []
     listAtention: list[cPacient] = []
