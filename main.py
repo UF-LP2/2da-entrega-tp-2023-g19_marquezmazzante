@@ -6,6 +6,15 @@ from library.cPacient import cPacient
 from library.cConsul import cConsul
 from library.attention import who_shall_I_Take_Care_of
 import time
+from threading import Thread
+
+hora: datetime=datetime.now()
+
+def tiempito():
+    global hora
+    while True:
+        hora=hora+timedelta(minutes=1)
+        time.sleep(1)
 
 
 NConsulMax = 5
@@ -22,11 +31,11 @@ def main_divide_and_conquer() -> None:
     listConsul: list[cConsul] = [cConsul(1), cConsul(2), cConsul(3), cConsul(4), cConsul(5), cConsul(6), cConsul(7),
                                  cConsul(8), cConsul(9), cConsul(10)]
 
-    time_actual = datetime.now()
+    t1 = Thread(target=tiempito, )
+    t1.start()
+    while True:
 
-    while(True):
-
-        if (time_actual.hour >= 6 and time_actual.hour < 10 and len(listPacients) > 1):          #turno mañana , 2 enfermeros
+        if (hora.hour >= 6 and hora.hour < 10 and len(listPacients) > 1):          #turno mañana , 2 enfermeros
 
             try:
                 pacientaux = listPacients.pop(0)
@@ -45,7 +54,7 @@ def main_divide_and_conquer() -> None:
             except Exception:
                 print("wrong symptoms")
 
-        elif (time_actual.hour >= 10 and time_actual.hour < 16 and len(listPacients) > 4):       #turno hora pico , 5 enfermeros
+        elif (hora.hour >= 10 and hora.hour < 16 and len(listPacients) > 4):       #turno hora pico , 5 enfermeros
 
             try:
                 pacientaux = listPacients.pop(0)
@@ -85,7 +94,7 @@ def main_divide_and_conquer() -> None:
             except Exception:
                 print("wrong symptoms")
 
-        elif (time_actual.hour >= 16 and time_actual.hour < 23 and len(listPacients) > 2):       #turno tarde , 3 enfermeros
+        elif (hora.hour >= 16 and hora.hour < 23 and len(listPacients) > 2):       #turno tarde , 3 enfermeros
 
             try:
                 pacientaux = listPacients.pop(0)
@@ -110,7 +119,7 @@ def main_divide_and_conquer() -> None:
                     listWaiting.append(pacientaux)
             except Exception:
                 print("wrong symptoms")
-            print(time_actual.hour)
+            print(hora.hour)
 
         elif (len(listPacients) > 0):                                                               #turno noche , 1 enfermero
 
@@ -141,12 +150,12 @@ def main_divide_and_conquer() -> None:
                 pacientaux = who_shall_I_Take_Care_of(listWaiting,0,len(listWaiting))
                 listWaiting.remove(pacientaux)
                 listAtention.append(pacientaux)
-                #print("se atendio a",pacientaux.name, pacientaux.colour.value, contador)
-                #contador += 1
+                print("se atendio a",pacientaux.name, pacientaux.colour.value, contador)
+                contador += 1
                 listConsul[j].empty_consul()
 
-
         time.sleep(1)
+    t1.join()
 
 
 if __name__ == "__main__":
