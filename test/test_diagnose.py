@@ -13,7 +13,7 @@ def test_diagnose1():
     listPacients = readPacients()
     diagnoses: list[int] = [3,1,5,1,5,5,3,4,2,4,1,1,4,4,2,1,3,1,5,1,5,3,5,3,2,3,1,1,2,1,2,1,1,1,4,2,5,3,1,1,1,4,2,2,1,2,1,2,2,5]
 
-    for i in range (len(diagnoses)):
+    for i in range(len(diagnoses)):
         assert nurse.diagnose(listPacients[i]) == diagnoses[i]
 
 def test_diagnose2():

@@ -3,6 +3,8 @@ from src.eSymptoms import esymptom
 from src.btSymptoms import btsymptoms
 from src.diagnose import search
 from src.eSymptoms import enumConverter
+from library.cColour import cColour
+from datetime import datetime
 
 class cNurse:
     def __init__(self,name,surname,DNI,licence):
@@ -23,18 +25,19 @@ class cNurse:
             assign = assign + search(enumConverter(pacient.symptoms[i].value), tree)
 
         if assign >= 90:
-            pacient.colour = 5
+            pacient.colour = cColour.RED
             pacient.max_time = 0
         elif assign < 90 and assign >= 70:
-            pacient.colour = 4
+            pacient.colour = cColour.ORANGE
             pacient.max_time = 10
         elif assign < 70 and assign >= 50:
-            pacient.colour = 3
+            pacient.colour = cColour.YELLOW
             pacient.max_time = 60
         elif assign < 50 and assign >= 30:
-            pacient.colour = 2
+            pacient.colour = cColour.GREEN
             pacient.max_time = 120
         else:
-            pacient.colour = 1
+            pacient.colour = cColour.BLUE
             pacient.max_time = 240
-        return pacient.colour
+        pacient.time_arrival = datetime.now()
+        return pacient.colour.value
