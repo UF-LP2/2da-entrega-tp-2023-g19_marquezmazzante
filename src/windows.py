@@ -3,7 +3,7 @@ from PyQt6.QtCore import Qt
 from src.graphyc_interface import cProyect
 import sys
 
-class Window(QMainWindow):      #windget principal q va a hacer todo todito
+class Window(QMainWindow):      #windget principal
 
     __title = None
     __top = None
