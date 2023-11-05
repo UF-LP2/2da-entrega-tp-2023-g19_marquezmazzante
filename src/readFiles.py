@@ -5,11 +5,11 @@ from src.eSymptoms import esymptom
 import os
 
 
-def readPacients() -> list[cPacient]:
+def readPacients(file_name: str) -> list[cPacient]:
     #pacients = queue.Queue()
     pacients: list[cPacient] = []
     current_directory = os.path.dirname(os.path.realpath(__file__))
-    file_path = os.path.join(current_directory,"DATA_PACIENT.csv")
+    file_path = os.path.join(current_directory,file_name)
 
     with open(file_path) as file:
         reader = csv.reader(file)
