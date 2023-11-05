@@ -1,7 +1,7 @@
 from library.cPacient import cPacient
 from library.cColour import cColour
 from src.eSymptoms import esymptom
-from library.attention import who_shall_I_Take_Care_of
+from library.attention import attend
 from datetime import datetime
 from datetime import timedelta
 
@@ -14,7 +14,7 @@ def test_attention1():
     pacientsims = cPacient("npc", "npc", 435534344, 43243)
     listapac = [pacient1, pacient2, pacient3, pacientsims]
     assert pacient1 == pacient1
-    assert who_shall_I_Take_Care_of(listapac,0,len(listapac))==pacient1
+    assert attend(listapac,0,len(listapac))==pacient1
 
 
 def test_attention2():
@@ -30,7 +30,7 @@ def test_attention3():
     pacient3=cPacient("alma","marquez",45296117,236,symp, cColour(3))
 
     listapac=[pacient1,pacient2,pacient3]
-    assert who_shall_I_Take_Care_of(listapac, 0, len(listapac))==pacient2
+    assert attend(listapac, 0, len(listapac))==pacient2
 
 def test_attention4():
     symp: list[esymptom]=[esymptom(12), esymptom(8), esymptom(9)]
@@ -43,5 +43,5 @@ def test_attention4():
 
     listpacientes: list[cPacient]=[p1, p2, p3]
 
-    assert who_shall_I_Take_Care_of(listpacientes, 0, len(listpacientes))==p1
+    assert attend(listpacientes, 0, len(listpacientes))==p1
 

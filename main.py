@@ -4,7 +4,7 @@ from datetime import datetime
 from datetime import timedelta
 from library.cPacient import cPacient
 from library.cConsul import cConsul
-from library.attention import who_shall_I_Take_Care_of
+from library.attention import attend
 import time
 from threading import Thread
 
@@ -20,8 +20,6 @@ def tiempito():
 NConsulMax = 5
 
 def main_divide_and_conquer() -> None:
-
-    contador = 0
 
     listNurses = readNurses()
     listPacients = readPacients("Mock_Data_Pacients.csv")
@@ -119,7 +117,6 @@ def main_divide_and_conquer() -> None:
                     listWaiting.append(pacientaux)
             except Exception:
                 print("wrong symptoms")
-            print(hora.hour)
 
         elif (len(listPacients) > 0):                                                               #turno noche , 1 enfermero
 
@@ -147,11 +144,10 @@ def main_divide_and_conquer() -> None:
             elif listConsul[0] == None:
                     break
             elif listConsul[j].occupied == False:
-                pacientaux = who_shall_I_Take_Care_of(listWaiting,0,len(listWaiting))
+                pacientaux = attend(listWaiting,0,len(listWaiting))
                 listWaiting.remove(pacientaux)
                 listAtention.append(pacientaux)
-                print("se atendio a",pacientaux.name, pacientaux.colour.value, contador)
-                contador += 1
+                print("se atendio a",pacientaux.name, pacientaux.colour.name)
                 listConsul[j].empty_consul()
 
         time.sleep(1)

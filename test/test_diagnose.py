@@ -1,6 +1,6 @@
 import pytest
 from src.btSymptoms import btsymptoms
-from src.diagnose import search
+from src.searchsymptoms import search
 from library.cPacient import cPacient
 from src.eSymptoms import esymptom
 from src.readFiles import readPacients

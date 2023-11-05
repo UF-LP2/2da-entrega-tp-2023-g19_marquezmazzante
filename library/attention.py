@@ -1,6 +1,6 @@
 from library.cPacient import cPacient
 
-def who_shall_I_Take_Care_of(lista_pac: list[cPacient],init: int,end: int) -> cPacient:
+def attend(lista_pac: list[cPacient],init: int,end: int) -> cPacient:
     if (len(lista_pac) == 0):
         raise Exception("lista vacia")
 
@@ -17,8 +17,8 @@ def who_shall_I_Take_Care_of(lista_pac: list[cPacient],init: int,end: int) -> cP
 
     else:                                                       ##tengo mas de 2 pacientes en la lista
         half = (end - init) // 2 + init
-        pac_aux1 = who_shall_I_Take_Care_of(lista_pac, init, half)
-        pac_aux2 = who_shall_I_Take_Care_of(lista_pac, half + 1, end)
+        pac_aux1 = attend(lista_pac, init, half)
+        pac_aux2 = attend(lista_pac, half + 1, end)
         coef1 = pac_aux1.colour.value / pac_aux1.timeremaining()
         coef2 = pac_aux2.colour.value / pac_aux2.timeremaining()
         if (coef1 >= coef2):
