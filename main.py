@@ -1,43 +1,142 @@
+import queue
+
 from src.readFiles import readNurses
 from src.readFiles import readPacients
 from datetime import datetime
 from library.cPacient import cPacient
-from library.diagnose import diagnose
 from library.cConsul import cConsul
 from library.attention import who_shall_I_Take_Care_of
 import time
+from queue import Queue
 
-NConsulMax = 10
+NConsulMax = 5
+
+def queues(N) -> list[Queue[cPacient]]:
+    listPacients = readPacients()
+    listacolas = []
+    for i in range (N):
+        cola: Queue[cPacient] = queue.Queue()
+        listacolas.append(cola)
+    j = 0
+    for _ in range (len(listPacients)):
+        if j == N:
+            j = 0
+        pacienteaux = listPacients.pop(0)
+        listacolas[j].put(pacienteaux)
+        j += 1
+    return listacolas
+
 
 def main_divide_and_conquer() -> None:
+
+    contador = 0
 
     listNurses = readNurses()
     listPacients = readPacients()
 
-    time_actual = datetime.now()
-    if (time_actual.hour > 6 and time_actual.hour < 10):       #turno mañana
-        nNurses = 2
-    elif (time_actual.hour > 10 and time_actual.hour < 16):    #turno hora pico
-        nNurses = 5
-    elif (time_actual.hour > 16 and time_actual.hour < 23):    #turno tarde
-        nNurses = 3
-    else:                                                      #turno noche
-        nNurses = 1
-
     listWaiting: list[cPacient] = []
     listAtention: list[cPacient] = []
-    listConsul: list[cConsul] = [cConsul(1),cConsul(2),cConsul(3),cConsul(4),cConsul(5),cConsul(6),cConsul(7),cConsul(8),cConsul(9),cConsul(10)]
+    listConsul: list[cConsul] = [cConsul(1), cConsul(2), cConsul(3), cConsul(4), cConsul(5), cConsul(6), cConsul(7),
+                                 cConsul(8), cConsul(9), cConsul(10)]
+
+
 
     while(True):
 
-        for i in range (len(listPacients)):
-            pacientaux: cPacient = listPacients.pop(0)
-            dummy = diagnose(pacientaux)
+        if (datetime.now().hour >= 6 and datetime.now().hour < 10 and len(listPacients) > 1):          #turno mañana , 2 enfermeros
 
-            if pacientaux.colour == 5:
+            pacientaux = listPacients.pop(0)
+            dummy = listNurses[0].diagnose(pacientaux)
+            if pacientaux.colour.value == 5:
                 listAtention.append(pacientaux)
             else:
                 listWaiting.append(pacientaux)
+
+            pacientaux = listPacients.pop(0)
+            dummy = listNurses[1].diagnose(pacientaux)
+            if pacientaux.colour.value == 5:
+                listAtention.append(pacientaux)
+            else:
+                listWaiting.append(pacientaux)
+
+        elif (datetime.now().hour >= 10 and datetime.now().hour < 16 and len(listPacients) > 4):       #turno hora pico , 5 enfermeros
+
+            pacientaux = listPacients.pop(0)
+            dummy = listNurses[0].diagnose(pacientaux)
+            if pacientaux.colour.value == 5:
+                listAtention.append(pacientaux)
+            else:
+                listWaiting.append(pacientaux)
+
+            pacientaux = listPacients.pop(0)
+            dummy = listNurses[1].diagnose(pacientaux)
+            if pacientaux.colour.value == 5:
+                listAtention.append(pacientaux)
+            else:
+                listWaiting.append(pacientaux)
+
+            pacientaux = listPacients.pop(0)
+            dummy = listNurses[2].diagnose(pacientaux)
+            if pacientaux.colour.value == 5:
+                listAtention.append(pacientaux)
+            else:
+                listWaiting.append(pacientaux)
+
+            pacientaux = listPacients.pop(0)
+            dummy = listNurses[3].diagnose(pacientaux)
+            if pacientaux.colour.value == 5:
+                listAtention.append(pacientaux)
+            else:
+                listWaiting.append(pacientaux)
+
+            pacientaux = listPacients.pop(0)
+            dummy = listNurses[4].diagnose(pacientaux)
+            if pacientaux.colour.value == 5:
+                listAtention.append(pacientaux)
+            else:
+                listWaiting.append(pacientaux)
+
+        elif (datetime.now().hour >= 16 and datetime.now().hour < 23 and len(listPacients) > 2):       #turno tarde , 3 enfermeros
+
+            pacientaux = listPacients.pop(0)
+            dummy = listNurses[0].diagnose(pacientaux)
+            if pacientaux.colour.value == 5:
+                listAtention.append(pacientaux)
+            else:
+                listWaiting.append(pacientaux)
+
+            pacientaux = listPacients.pop(0)
+            dummy = listNurses[1].diagnose(pacientaux)
+            if pacientaux.colour.value == 5:
+                listAtention.append(pacientaux)
+            else:
+                listWaiting.append(pacientaux)
+
+            pacientaux = listPacients.pop(0)
+            dummy = listNurses[2].diagnose(pacientaux)
+            if pacientaux.colour.value == 5:
+                listAtention.append(pacientaux)
+            else:
+                listWaiting.append(pacientaux)
+
+        elif (len(listPacients) > 0):                                                               #turno noche , 1 enfermero
+            pacientaux = listPacients.pop(0)
+            dummy = listNurses[0].diagnose(pacientaux)
+            if pacientaux.colour.value == 5:
+                listAtention.append(pacientaux)
+            else:
+                listWaiting.append(pacientaux)
+
+
+        # for i in range(len(listPacients)):
+        #     pacientaux: cPacient = listPacients.pop(0)
+        #     dummy = listNurses[0].diagnose(pacientaux)
+        #
+        #     if pacientaux.colour.value == 5:
+        #         listAtention.append(pacientaux)
+        #     else:
+        #         listWaiting.append(pacientaux)
+
 
         consulaux = (len(listWaiting) // 10) + 1
         if (consulaux >= NConsulMax):
@@ -45,12 +144,17 @@ def main_divide_and_conquer() -> None:
         else:
             Nconsul_open = consulaux
 
+
+
         for j in range(Nconsul_open):
+            if len(listWaiting) == 0:
+                break
             if listConsul[j].occupied == False:
                 pacientaux = who_shall_I_Take_Care_of(listWaiting,0,len(listWaiting))
                 listWaiting.remove(pacientaux)
                 listAtention.append(pacientaux)
-                print("se atendio a",pacientaux.name)
+                print("se atendio a",pacientaux.name, pacientaux.colour.value, contador)
+                contador += 1
                 listConsul[j].empty_consul()
             if listConsul[0] == None:
                 break
