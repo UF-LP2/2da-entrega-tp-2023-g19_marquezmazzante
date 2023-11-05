@@ -1,31 +1,14 @@
-import queue
-
 from src.readFiles import readNurses
 from src.readFiles import readPacients
 from datetime import datetime
+from datetime import timedelta
 from library.cPacient import cPacient
 from library.cConsul import cConsul
 from library.attention import who_shall_I_Take_Care_of
 import time
-from queue import Queue
+
 
 NConsulMax = 5
-
-def queues(N) -> list[Queue[cPacient]]:
-    listPacients = readPacients()
-    listacolas = []
-    for i in range (N):
-        cola: Queue[cPacient] = queue.Queue()
-        listacolas.append(cola)
-    j = 0
-    for _ in range (len(listPacients)):
-        if j == N:
-            j = 0
-        pacienteaux = listPacients.pop(0)
-        listacolas[j].put(pacienteaux)
-        j += 1
-    return listacolas
-
 
 def main_divide_and_conquer() -> None:
 
@@ -39,103 +22,107 @@ def main_divide_and_conquer() -> None:
     listConsul: list[cConsul] = [cConsul(1), cConsul(2), cConsul(3), cConsul(4), cConsul(5), cConsul(6), cConsul(7),
                                  cConsul(8), cConsul(9), cConsul(10)]
 
-
+    time_actual = datetime.now()
 
     while(True):
 
-        if (datetime.now().hour >= 6 and datetime.now().hour < 10 and len(listPacients) > 1):          #turno mañana , 2 enfermeros
+        if (time_actual.hour >= 6 and time_actual.hour < 10 and len(listPacients) > 1):          #turno mañana , 2 enfermeros
 
-            pacientaux = listPacients.pop(0)
-            dummy = listNurses[0].diagnose(pacientaux)
-            if pacientaux.colour.value == 5:
-                listAtention.append(pacientaux)
-            else:
-                listWaiting.append(pacientaux)
+            try:
+                pacientaux = listPacients.pop(0)
+                dummy = listNurses[0].diagnose(pacientaux)
+                if pacientaux.colour.value == 5:
+                    listAtention.append(pacientaux)
+                else:
+                    listWaiting.append(pacientaux)
 
-            pacientaux = listPacients.pop(0)
-            dummy = listNurses[1].diagnose(pacientaux)
-            if pacientaux.colour.value == 5:
-                listAtention.append(pacientaux)
-            else:
-                listWaiting.append(pacientaux)
+                pacientaux = listPacients.pop(0)
+                dummy = listNurses[1].diagnose(pacientaux)
+                if pacientaux.colour.value == 5:
+                    listAtention.append(pacientaux)
+                else:
+                    listWaiting.append(pacientaux)
+            except Exception:
+                print("wrong symptoms")
 
-        elif (datetime.now().hour >= 10 and datetime.now().hour < 16 and len(listPacients) > 4):       #turno hora pico , 5 enfermeros
+        elif (time_actual.hour >= 10 and time_actual.hour < 16 and len(listPacients) > 4):       #turno hora pico , 5 enfermeros
 
-            pacientaux = listPacients.pop(0)
-            dummy = listNurses[0].diagnose(pacientaux)
-            if pacientaux.colour.value == 5:
-                listAtention.append(pacientaux)
-            else:
-                listWaiting.append(pacientaux)
+            try:
+                pacientaux = listPacients.pop(0)
+                dummy = listNurses[0].diagnose(pacientaux)
+                if pacientaux.colour.value == 5:
+                    listAtention.append(pacientaux)
+                else:
+                    listWaiting.append(pacientaux)
 
-            pacientaux = listPacients.pop(0)
-            dummy = listNurses[1].diagnose(pacientaux)
-            if pacientaux.colour.value == 5:
-                listAtention.append(pacientaux)
-            else:
-                listWaiting.append(pacientaux)
+                pacientaux = listPacients.pop(0)
+                dummy = listNurses[1].diagnose(pacientaux)
+                if pacientaux.colour.value == 5:
+                    listAtention.append(pacientaux)
+                else:
+                    listWaiting.append(pacientaux)
 
-            pacientaux = listPacients.pop(0)
-            dummy = listNurses[2].diagnose(pacientaux)
-            if pacientaux.colour.value == 5:
-                listAtention.append(pacientaux)
-            else:
-                listWaiting.append(pacientaux)
+                pacientaux = listPacients.pop(0)
+                dummy = listNurses[2].diagnose(pacientaux)
+                if pacientaux.colour.value == 5:
+                    listAtention.append(pacientaux)
+                else:
+                    listWaiting.append(pacientaux)
 
-            pacientaux = listPacients.pop(0)
-            dummy = listNurses[3].diagnose(pacientaux)
-            if pacientaux.colour.value == 5:
-                listAtention.append(pacientaux)
-            else:
-                listWaiting.append(pacientaux)
+                pacientaux = listPacients.pop(0)
+                dummy = listNurses[3].diagnose(pacientaux)
+                if pacientaux.colour.value == 5:
+                    listAtention.append(pacientaux)
+                else:
+                    listWaiting.append(pacientaux)
 
-            pacientaux = listPacients.pop(0)
-            dummy = listNurses[4].diagnose(pacientaux)
-            if pacientaux.colour.value == 5:
-                listAtention.append(pacientaux)
-            else:
-                listWaiting.append(pacientaux)
+                pacientaux = listPacients.pop(0)
+                dummy = listNurses[4].diagnose(pacientaux)
+                if pacientaux.colour.value == 5:
+                    listAtention.append(pacientaux)
+                else:
+                    listWaiting.append(pacientaux)
+            except Exception:
+                print("wrong symptoms")
 
-        elif (datetime.now().hour >= 16 and datetime.now().hour < 23 and len(listPacients) > 2):       #turno tarde , 3 enfermeros
+        elif (time_actual.hour >= 16 and time_actual.hour < 23 and len(listPacients) > 2):       #turno tarde , 3 enfermeros
 
-            pacientaux = listPacients.pop(0)
-            dummy = listNurses[0].diagnose(pacientaux)
-            if pacientaux.colour.value == 5:
-                listAtention.append(pacientaux)
-            else:
-                listWaiting.append(pacientaux)
+            try:
+                pacientaux = listPacients.pop(0)
+                dummy = listNurses[0].diagnose(pacientaux)
+                if pacientaux.colour.value == 5:
+                    listAtention.append(pacientaux)
+                else:
+                    listWaiting.append(pacientaux)
 
-            pacientaux = listPacients.pop(0)
-            dummy = listNurses[1].diagnose(pacientaux)
-            if pacientaux.colour.value == 5:
-                listAtention.append(pacientaux)
-            else:
-                listWaiting.append(pacientaux)
+                pacientaux = listPacients.pop(0)
+                dummy = listNurses[1].diagnose(pacientaux)
+                if pacientaux.colour.value == 5:
+                    listAtention.append(pacientaux)
+                else:
+                    listWaiting.append(pacientaux)
 
-            pacientaux = listPacients.pop(0)
-            dummy = listNurses[2].diagnose(pacientaux)
-            if pacientaux.colour.value == 5:
-                listAtention.append(pacientaux)
-            else:
-                listWaiting.append(pacientaux)
+                pacientaux = listPacients.pop(0)
+                dummy = listNurses[2].diagnose(pacientaux)
+                if pacientaux.colour.value == 5:
+                    listAtention.append(pacientaux)
+                else:
+                    listWaiting.append(pacientaux)
+            except Exception:
+                print("wrong symptoms")
+            print(time_actual.hour)
 
         elif (len(listPacients) > 0):                                                               #turno noche , 1 enfermero
-            pacientaux = listPacients.pop(0)
-            dummy = listNurses[0].diagnose(pacientaux)
-            if pacientaux.colour.value == 5:
-                listAtention.append(pacientaux)
-            else:
-                listWaiting.append(pacientaux)
 
-
-        # for i in range(len(listPacients)):
-        #     pacientaux: cPacient = listPacients.pop(0)
-        #     dummy = listNurses[0].diagnose(pacientaux)
-        #
-        #     if pacientaux.colour.value == 5:
-        #         listAtention.append(pacientaux)
-        #     else:
-        #         listWaiting.append(pacientaux)
+            try:
+                pacientaux = listPacients.pop(0)
+                dummy = listNurses[0].diagnose(pacientaux)
+                if pacientaux.colour.value == 5:
+                    listAtention.append(pacientaux)
+                else:
+                    listWaiting.append(pacientaux)
+            except Exception:
+                print("wrong symptoms")
 
 
         consulaux = (len(listWaiting) // 10) + 1
@@ -145,19 +132,19 @@ def main_divide_and_conquer() -> None:
             Nconsul_open = consulaux
 
 
-
         for j in range(Nconsul_open):
             if len(listWaiting) == 0:
                 break
-            if listConsul[j].occupied == False:
+            elif listConsul[0] == None:
+                    break
+            elif listConsul[j].occupied == False:
                 pacientaux = who_shall_I_Take_Care_of(listWaiting,0,len(listWaiting))
                 listWaiting.remove(pacientaux)
                 listAtention.append(pacientaux)
-                print("se atendio a",pacientaux.name, pacientaux.colour.value, contador)
-                contador += 1
+                #print("se atendio a",pacientaux.name, pacientaux.colour.value, contador)
+                #contador += 1
                 listConsul[j].empty_consul()
-            if listConsul[0] == None:
-                break
+
 
         time.sleep(1)
 
