@@ -39,3 +39,5 @@ def test_search1():
 def test_search2():
       tree = btsymptoms()
       assert search("bled", tree) == 90
+
+#h
