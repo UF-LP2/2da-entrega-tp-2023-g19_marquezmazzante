@@ -9,7 +9,7 @@ from library.cNurse import cNurse
 
 def test_diagnose1():
     nurse = cNurse("alma", "marquez", 1522, 1254)
-    listPacients: list[cPacient] = readPacients("DATA_PACIENT.csv")
+    listPacients: list[cPacient] = readPacients("DATA_PACIENT.csv",50)
     diagnoses: list[int] = [3,1,5,1,5,5,3,4,2,4,1,1,4,4,2,1,3,1,5,1,5,3,5,3,2,3,1,1,2,1,2,1,1,1,4,2,5,3,1,1,1,4,2,2,1,2,1,2,2,5]
 
     for i in range(len(diagnoses)):
