@@ -7,6 +7,9 @@ from library.cConsul import cConsul
 from library.attention import attend
 import time
 from threading import Thread
+from src.windows import Window
+from PyQt6.QtWidgets import QApplication
+import sys
 
 hora: datetime=datetime.now()
 
@@ -31,6 +34,11 @@ def main_divide_and_conquer() -> None:
 
     t1 = Thread(target=tiempito, )
     t1.start()
+
+
+    app = QApplication([])
+    window = Window(listWaiting)
+
     while True:
 
         if (hora.hour >= 6 and hora.hour < 10 and len(listPacients) > 1):          #turno mañana , 2 enfermeros
@@ -149,6 +157,11 @@ def main_divide_and_conquer() -> None:
                 listAtention.append(pacientaux)
                 print("se atendio a",pacientaux.name, pacientaux.colour.name)
                 listConsul[j].empty_consul()
+
+        window.actualizar_interfaz(listAtention)
+        window.show()
+
+        app.processEvents()
 
         time.sleep(1)
     t1.join()
