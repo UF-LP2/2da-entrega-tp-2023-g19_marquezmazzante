@@ -1,6 +1,9 @@
 import sys
 import random
-from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QHBoxLayout
+from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QHBoxLayout, QLabel
+from library.cNurse import cNurse
+from library.cPacient import cPacient
+from src.readFiles import readPacients,readNurses
 
 class Simulacion(QWidget):
     def __init__(self):
@@ -16,28 +19,47 @@ class Simulacion(QWidget):
         # Crear un diseño horizontal para contener el botón
         hlayout = QHBoxLayout()
 
-        self.btnIniciar = QPushButton('Iniciar Simulación', self)
-        self.btnIniciar.clicked.connect(self.iniciarSimulacion)
-        self.btnIniciar.setStyleSheet('font-size: 18px;')  # Establecer el tamaño del texto del botón
+
+        self.__btnIniciar = QPushButton('Iniciar Simulación', self)
+        self.__btnIniciar.clicked.connect(self.iniciarSimulacion)
+        self.__btnIniciar.setStyleSheet('font-size: 20px;')  # Establecer el tamaño del texto del botón
 
         # Alinea el botón a la izquierda en el diseño horizontal
-        hlayout.addWidget(self.btnIniciar)
+        hlayout.addWidget(self.__btnIniciar)
 
         layout.addLayout(hlayout)  # Agregar el diseño horizontal al diseño vertical
 
+        # Agregar contenedor para las etiquetas de los enfermeros (inicialmente vacío)
+        self.__nurseLabelsContainer = QWidget(self)
+        self.__nurseLabelsContainer.hide()  # Ocultar el contenedor al inicio
+        layout.addWidget(self.__nurseLabelsContainer)
+
+        # Agregar un diseño vertical para las etiquetas de los enfermeros
+        self.__nurseLabelsLayout = QVBoxLayout(self.__nurseLabelsContainer)
+        self.__nurseLabelsLayout.setContentsMargins(0, 0, 0, 0)  # Sin márgenes
+
         self.setLayout(layout)
 
+
+    def actualizarEtiquetasEnf(self):
+
+        listauxenf = readNurses()
+        for nombre in listauxenf:
+            label = QLabel(nombre.name, self)
+            label.setFixedSize(100, 100)  # Tamaño cuadrado para el objeto cuadrado del enfermero
+            label.setStyleSheet('border: 1px solid black;')  # Borde negro para el objeto cuadrado
+            self.__nurseLabelsLayout.addWidget(label)  # Agregar la etiqueta del enfermero al diseño vertical
+
+        # Mostrar el contenedor con las etiquetas después de asignar los nombres
+        self.__nurseLabelsContainer.show()
+
+
     def iniciarSimulacion(self):
-        # Lógica de simulación
-        pacientes = ['Paciente 1', 'Paciente 2', 'Paciente 3', 'Paciente 4', 'Paciente 5']
-        random.shuffle(pacientes)  # Mezclar la lista aleatoriamente
+        self.actualizarEtiquetasEnf()
+        self.__btnIniciar.hide()
+        pass
 
-        for paciente in pacientes:
-            # Diagnóstico y tratamiento simulado
-            print(f'Diagnosticando y tratando a: {paciente}')
 
-        # Ocultar el botón al iniciar la simulación
-        self.btnIniciar.hide()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
