@@ -5,7 +5,7 @@ from src.eSymptoms import esymptom
 import os
 
 
-def readPacients(file_name: str) -> list[cPacient]:
+def readPacients(file_name: str, N = None) -> list[cPacient]:
     #pacients = queue.Queue()
     pacients: list[cPacient] = []
     current_directory = os.path.dirname(os.path.realpath(__file__))
@@ -16,12 +16,15 @@ def readPacients(file_name: str) -> list[cPacient]:
         symptoms: list[esymptom]
         next(file)
         for row in reader:
-            symptoms0 = row[4]
-            symptomsaux: list[str] = symptoms0.split()
-            symptoms = [esymptom(int(symptom))for symptom in symptomsaux]
-            pacient0 = cPacient(row[0],row[1],row[2],row[3],symptoms)
-            pacients.append(pacient0)
-            #pacients.put(pacient0)
+            if N > 0:
+                symptoms0 = row[4]
+                symptomsaux: list[str] = symptoms0.split()
+                symptoms = [esymptom(int(symptom))for symptom in symptomsaux]
+                pacient0 = cPacient(row[0],row[1],row[2],row[3],symptoms)
+                pacients.append(pacient0)
+                N -= 1
+            else:
+                return pacients
     return pacients
 
 def readNurses() -> list[cNurse]:

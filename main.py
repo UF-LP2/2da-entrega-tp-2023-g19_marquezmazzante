@@ -19,13 +19,13 @@ def tiempito():
         hora=hora+timedelta(minutes=1)
         time.sleep(1)
 
-
+Npacientes = 100
 NConsulMax = 5
 
 def main_divide_and_conquer() -> None:
 
     listNurses = readNurses()
-    listPacients = readPacients("Mock_Data_Pacients.csv")
+    listPacients = readPacients("Mock_Data_Pacients.csv", Npacientes)
 
     listWaiting: list[cPacient] = []
     listAtention: list[cPacient] = []
