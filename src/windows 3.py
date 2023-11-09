@@ -148,7 +148,7 @@ class Interfaz(QWidget):
             self.timer_agregar_paciente.stop()
 
     def diagnosticarPaciente(self):
-        if self.simulacion_activa:
+        if self.simulacion_activa and self.listitapacaux:
             pac_a_diagnosticar = self.listapacientes.takeItem(0)
             paciente_aux: cPacient = self.listitapacaux.pop(0)
             self.nurse.diagnose(paciente_aux)
@@ -158,6 +158,8 @@ class Interfaz(QWidget):
             else:
                 self.listaespera.addItem(pac_a_diagnosticar)
                 self.listaesperaaux.append(paciente_aux)
+        else:
+            self.timer_diagnosticar_paciente.stop()
 
     def atenderPaciente(self):
         if self.simulacion_activa:
@@ -166,8 +168,13 @@ class Interfaz(QWidget):
             nuevo_paciente = "Paciente " + str(pacaux.name)
             item1 = QListWidgetItem(nuevo_paciente)
             item1.setBackground(QColor(pacaux.colour.name))
+            pos=0
+            for i in range(len(self.listaesperaaux)):
+                if self.listaesperaaux[i]==pacaux:
+                    pos=i
+                    break
+            self.listaespera.takeItem(pos)
             self.listaatendidos.addItem(item1)
-
 
 
 if __name__ == '__main__':
