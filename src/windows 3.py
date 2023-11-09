@@ -162,7 +162,7 @@ class Interfaz(QWidget):
             self.timer_diagnosticar_paciente.stop()
 
     def atenderPaciente(self):
-        if self.simulacion_activa:
+        if self.simulacion_activa and self.listaesperaaux:
             pacaux = attend(self.listaesperaaux, 0, len(self.listaesperaaux))
             self.listaesperaaux.remove(pacaux)
             nuevo_paciente = "Paciente " + str(pacaux.name)
