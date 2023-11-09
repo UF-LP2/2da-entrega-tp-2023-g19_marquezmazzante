@@ -37,5 +37,5 @@ class cPacient:
         return timepassed
 
     def timeremaining(self) -> int:                             ## devuelve el tiempo que le queda al paciente
-        minpassed: int = self.timepassed().seconds * 5
+        minpassed: int = self.timepassed().seconds
         return (self.max_time - minpassed)

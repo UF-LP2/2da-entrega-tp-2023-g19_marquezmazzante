@@ -124,9 +124,9 @@ class Interfaz(QWidget):
         self.listaespera.show()
         self.listaatendidos.show()
 
-        self.timer_agregar_paciente.start(2000)
-        self.timer_diagnosticar_paciente.start(4000)
-        self.timer_atender_paciente.start(7000)
+        self.timer_agregar_paciente.start(1000)
+        self.timer_diagnosticar_paciente.start(2000)
+        self.timer_atender_paciente.start(3000)
 
         self.simulacion_activa = True
 
@@ -162,6 +162,7 @@ class Interfaz(QWidget):
     def atenderPaciente(self):
         if self.simulacion_activa:
             pacaux = attend(self.listaesperaaux, 0, len(self.listaesperaaux))
+            self.listaesperaaux.remove(pacaux)
             nuevo_paciente = "Paciente " + str(pacaux.name)
             item1 = QListWidgetItem(nuevo_paciente)
             item1.setBackground(QColor(pacaux.colour.name))

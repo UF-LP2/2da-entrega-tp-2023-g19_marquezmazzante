@@ -163,7 +163,7 @@ def main_divide_and_conquer() -> None:
 
         app.processEvents()
 
-        time.sleep(1)
+        time.sleep(3)
     t1.join()
 
 
