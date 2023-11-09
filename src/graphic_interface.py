@@ -20,17 +20,19 @@ class Interfaz(QWidget):
 
         self.layout_principal = QVBoxLayout()
 
-        # Layout para los rótulos
+        #layout para rotulos
         layout_rotulos = QHBoxLayout()
 
-        # Rótulos para las listas
+        #rotulos de las listas
         self.label_pacientes = QLabel("PACIENTES")
         self.label_espera = QLabel("LISTA DE ESPERA")
         self.label_atendidos = QLabel("LISTA DE ATENDIDOS")
         self.nurse = cNurse("lorenzo","mazzante", "44958354", "321-2132-123")
 
+        #fuente para titulos
         font = QFont()
-        font.setPointSize(16)  # Tamaño de la fuente
+        font.setPointSize(16)
+        font.setBold(True)
         self.label_pacientes.setFont(font)
         self.label_espera.setFont(font)
         self.label_atendidos.setFont(font)
@@ -42,17 +44,15 @@ class Interfaz(QWidget):
         # Layout para las listas
         layout_listas = QHBoxLayout()
 
-        # Listas (inicialmente ocultas)
+        #listas widgets
         self.listapacientes = QListWidget(self)
         self.listaespera = QListWidget(self)
         self.listaatendidos = QListWidget(self)
 
-        # Ocultar inicialmente los titulos
+        #ocultar titulos y listas al principio
         self.label_pacientes.hide()
         self.label_espera.hide()
         self.label_atendidos.hide()
-
-        # Ocultar las listas inicialmente
         self.listapacientes.hide()
         self.listaespera.hide()
         self.listaatendidos.hide()
@@ -61,21 +61,25 @@ class Interfaz(QWidget):
         layout_listas.addWidget(self.listaespera)
         layout_listas.addWidget(self.listaatendidos)
 
-        # Botón para iniciar simulación
+        #boton para simular
         self.boton_iniciar = QPushButton(self)
         self.boton_iniciar.setText("Iniciar simulación")  # Establecer el texto en negrita
         self.boton_iniciar.setFixedSize(300, 150)  # Cambiar el tamaño del botón
         self.boton_iniciar.setStyleSheet("QPushButton { background-color: white; }"
                                          "QPushButton:hover { background-color: green; }")
+        font = QFont()
+        font.setPointSize(20)
+        font.setBold(True)
         self.boton_iniciar.setFont(font)
 
         self.boton_iniciar.clicked.connect(self.mostrarListas)
 
-        # Agregar los layouts al diseño principal
+        #agregar los layouts al diseño principal
         self.layout_principal.addLayout(layout_rotulos)
         self.layout_principal.addLayout(layout_listas)
         self.layout_principal.addWidget(self.boton_iniciar, alignment=Qt.AlignmentFlag.AlignCenter)
 
+        #fuente para las listas
         font_listas = QFont()
         font_listas.setPointSize(22)
         self.listapacientes.setFont(font_listas)
@@ -88,31 +92,37 @@ class Interfaz(QWidget):
         self.listitapacaux = []
         self.listaesperaaux = []
 
+        #timer para llamar funciones
         self.timer_agregar_paciente = QTimer(self)
         self.timer_agregar_paciente.timeout.connect(self.agregarPaciente)
-
         self.timer_diagnosticar_paciente = QTimer(self)
         self.timer_diagnosticar_paciente.timeout.connect(self.diagnosticarPaciente)
-
         self.timer_atender_paciente = QTimer(self)
         self.timer_atender_paciente.timeout.connect(self.atenderPaciente)
 
-        self.simulacion_activa = False  # Variable para rastrear el estado de la simulación
+        #variable para rastrear el estado de la simulación
+        self.simulacion_activa = False
 
         layout_botones = QVBoxLayout()
 
-        # Botón para detener simulación
+        font.setBold(False)
+        #botón para detener simulación
         self.boton_detener = QPushButton("Detener simulación", self)
         self.boton_detener.clicked.connect(self.detenerSimulacion)
         layout_botones.addWidget(self.boton_detener)
+        self.boton_detener.setFont(font)
         self.boton_detener.hide()
 
+        #boton para resumir simulación
         self.boton_resumir = QPushButton("Resumir Simulación")
         self.boton_resumir.clicked.connect(self.resumirSimulacion)
         layout_botones.addWidget(self.boton_resumir)
+        self.boton_resumir.setFont(font)
         self.boton_resumir.hide()
 
         self.layout_principal.addLayout(layout_botones)
+
+        #muestro en pantalla completa
         self.showMaximized()
 
     def mostrarListas(self):
@@ -132,7 +142,7 @@ class Interfaz(QWidget):
         self.listaatendidos.show()
 
         self.timer_agregar_paciente.start(1000)
-        self.timer_diagnosticar_paciente.start(2000)
+        self.timer_diagnosticar_paciente.start(1500)
         self.timer_atender_paciente.start(3000)
 
         self.simulacion_activa = True

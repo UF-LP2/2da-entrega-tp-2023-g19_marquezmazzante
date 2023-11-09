@@ -7,9 +7,6 @@ from library.cConsul import cConsul
 from library.attention import attend
 import time
 from threading import Thread
-from src.windows import Window
-from PyQt6.QtWidgets import QApplication
-import sys
 
 hora: datetime=datetime.now()
 
