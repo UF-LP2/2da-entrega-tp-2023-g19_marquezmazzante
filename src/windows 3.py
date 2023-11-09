@@ -8,6 +8,7 @@ from PyQt6.QtCore import Qt, QTimer
 from src.readFiles import readPacients
 from library.cPacient import cPacient
 from library.cNurse import cNurse
+from library.attention import attend
 
 class Interfaz(QWidget):
     def __init__(self):
@@ -93,6 +94,9 @@ class Interfaz(QWidget):
         self.timer_diagnosticar_paciente = QTimer(self)
         self.timer_diagnosticar_paciente.timeout.connect(self.diagnosticarPaciente)
 
+        self.timer_atender_paciente = QTimer(self)
+        self.timer_atender_paciente.timeout.connect(self.atenderPaciente)
+
         self.simulacion_activa = False  # Variable para rastrear el estado de la simulación
 
         layout_botones = QVBoxLayout()
@@ -101,12 +105,14 @@ class Interfaz(QWidget):
         self.boton_detener = QPushButton("Detener simulación", self)
         self.boton_detener.clicked.connect(self.detenerSimulacion)
         layout_botones.addWidget(self.boton_detener)
+        self.boton_detener.hide()
 
         self.layout_principal.addLayout(layout_botones)
 
     def mostrarListas(self):
         # Ocultar el botón de iniciar simulación
         self.boton_iniciar.hide()
+        self.boton_detener.show()
 
         # Mostrar los nombres
         self.label_pacientes.show()
@@ -118,11 +124,9 @@ class Interfaz(QWidget):
         self.listaespera.show()
         self.listaatendidos.show()
 
-        self.timer_agregar_paciente.timeout.connect(self.agregarPaciente)
         self.timer_agregar_paciente.start(2000)
-
-        self.timer_diagnosticar_paciente.timeout.connect(self.diagnosticarPaciente)
-        self.timer_diagnosticar_paciente.start(4500)
+        self.timer_diagnosticar_paciente.start(4000)
+        self.timer_atender_paciente.start(7000)
 
         self.simulacion_activa = True
 
@@ -133,13 +137,15 @@ class Interfaz(QWidget):
         self.simulacion_activa = False
 
     def agregarPaciente(self):
-        if self.simulacion_activa:
+        if self.simulacion_activa and self.listitaaux:
             paciente_aux = self.listitaaux.pop(0)
             self.listitapacaux.append(paciente_aux)
             nuevo_paciente = "Paciente " + str(paciente_aux.name)
             item1 = QListWidgetItem(nuevo_paciente)
             item1.setBackground(QColor("grey"))
             self.listapacientes.addItem(item1)
+        else:
+            self.timer_agregar_paciente.stop()
 
     def diagnosticarPaciente(self):
         if self.simulacion_activa:
@@ -153,13 +159,14 @@ class Interfaz(QWidget):
                 self.listaespera.addItem(pac_a_diagnosticar)
                 self.listaesperaaux.append(paciente_aux)
 
+    def atenderPaciente(self):
+        if self.simulacion_activa:
+            pacaux = attend(self.listaesperaaux, 0, len(self.listaesperaaux))
+            nuevo_paciente = "Paciente " + str(pacaux.name)
+            item1 = QListWidgetItem(nuevo_paciente)
+            item1.setBackground(QColor(pacaux.colour.name))
+            self.listaatendidos.addItem(item1)
 
-
-
-
-        # for i in range (len(self.listitaaux)):
-        #     item = QListWidgetItem(str(self.listitaaux[i].name))
-        #     self.listapacientes.addItem(item)
 
 
 if __name__ == '__main__':
