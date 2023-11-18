@@ -39,3 +39,10 @@ class cPacient:
     def timeremaining(self) -> int:                             ## devuelve el tiempo que le queda al paciente
         minpassed: int = self.timepassed().seconds
         return (self.max_time - minpassed)
+
+
+class InvalidPacient(Exception):
+    def __int__(self,pacient: cPacient,mesage = "Pacient has passed away"):
+        self.pacient = pacient
+        self.mesage = mesage
+        super().__init__(self.mesage)
