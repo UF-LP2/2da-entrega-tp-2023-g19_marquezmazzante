@@ -1,15 +1,24 @@
-from library.cPacient import cPacient
+from library.cPacient import cPacient,InvalidPacient
 
 def attend(lista_pac: list[cPacient],init: int,end: int) -> cPacient:
     if (len(lista_pac) == 0):
-        raise Exception("lista vacia")
+        return None
 
     if (end - init == 0):                                       ##tengo un solo paciente en la lista
         return lista_pac[init-1]
 
     elif (end - init == 1):                                     ##tengo dos pacientes en la lista
-        coef1 = lista_pac[init-1].colour.value / lista_pac[init-1].timeremaining()
-        coef2 = lista_pac[end-1].colour.value / lista_pac[end-1].timeremaining()
+        timeremaining1 = lista_pac[init-1].timeremaining()
+        timeremaining2 = lista_pac[end-1].timeremaining()
+
+        if(timeremaining1 <= 0):
+            raise InvalidPacient(lista_pac[init-1])
+        if(timeremaining2 <= 0):
+            raise InvalidPacient(lista_pac[end-1])
+
+
+        coef1 = lista_pac[init-1].colour.value / timeremaining1
+        coef2 = lista_pac[end-1].colour.value / timeremaining2
         if (coef1 >= coef2):
             return lista_pac[init-1]
         else:
