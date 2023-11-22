@@ -42,7 +42,7 @@ class cPacient:
 
 
 class InvalidPacient(Exception):
-    def __int__(self,pacient: cPacient,mesage = "Pacient has passed away"):
-        self.pacient = pacient
-        self.mesage = mesage
+    def __init__(self,pacient: cPacient,mesage = "Pacient has passed away"):
+        self.pacient : cPacient = pacient
+        self.mesage : str = mesage
         super().__init__(self.mesage)

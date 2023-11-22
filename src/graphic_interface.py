@@ -6,7 +6,7 @@ from PyQt6.QtGui import QFont, QColor
 from PyQt6.QtCore import Qt, QTimer
 
 from src.readFiles import readPacients
-from library.cPacient import cPacient
+from library.cPacient import cPacient, InvalidPacient
 from library.cNurse import cNurse
 from library.attention import attend
 
@@ -187,12 +187,14 @@ class Interfaz(QWidget):
 
     def atenderPaciente(self):
         if self.simulacion_activa and self.listaesperaaux:
-            pacaux = attend(self.listaesperaaux, 0, len(self.listaesperaaux))
+
+            try:
+                pacaux = attend(self.listaesperaaux, 0, len(self.listaesperaaux))
+                flag = False
+            except InvalidPacient as IP:
+                pacaux: cPacient = IP.pacient
+                flag = True
             nuevo_paciente = "Paciente " + str(pacaux.name)
-
-
-            item1 = QListWidgetItem(nuevo_paciente)
-            item1.setBackground(QColor(pacaux.colour.name))
 
             pos=0
             for i in range(len(self.listaesperaaux)):
@@ -202,7 +204,10 @@ class Interfaz(QWidget):
 
             self.listaesperaaux.remove(pacaux)
             self.listaespera.takeItem(pos)
-            self.listaatendidos.insertItem(0,item1)
+            if (flag == False):
+                item1 = QListWidgetItem(nuevo_paciente)
+                item1.setBackground(QColor(pacaux.colour.name))
+                self.listaatendidos.insertItem(0,item1)
 
 
 if __name__ == '__main__':

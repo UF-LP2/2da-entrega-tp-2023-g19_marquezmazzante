@@ -27,6 +27,7 @@ def test_attention2():
     with pytest.raises(InvalidPacient):
         attend(listpac, 0, len(listpac))
 
+
 def test_attention3():
     symp: list[esymptom]=[esymptom(12), esymptom(8), esymptom(9)]
     p1=cPacient("leo", "messi", 1313131, 13, symp, cColour(4))
@@ -39,7 +40,6 @@ def test_attention3():
 
     with pytest.raises(InvalidPacient):
         attend(listpac,0,len(listpac))
-
 
 
 
